@@ -32,28 +32,14 @@ int main() {
     string myLine;
     std::vector<int> fields;
     while (std::getline (file,myLine)){
- //  	cout<< myLine<< endl;
     RCA::divideLine(myLine, fields);
     graph.push_back(fields);
     }
     file.close();
-/*
-    cout<< "check first and last "<< endl;
-    std::for_each(graph[0].begin(), graph[0].end(),[](int a){cout<< a<<" "; });
-    cout<<  endl;
-    std::for_each(graph[graph.size()-1].begin(), graph[graph.size()-1].end(),[](int a){cout<< a<<" "; });
-    cout<<  endl;
-*/
-    /*
-    for (int gg=0; gg< (int)graph.size(); ++gg){
-    std::for_each(graph[gg].begin(), graph[gg].end(),[](int a){cout<< a<<" "; });
-    cout<<  endl;
-    }
-*/
+
 
     RCA myMinCut(graph);
     int nCuts=myMinCut.getMinCut();
- //   cout<< "Cuts: "<< nCuts<<endl;
     if(nCuts< minCut) minCut=nCuts;
     }
 

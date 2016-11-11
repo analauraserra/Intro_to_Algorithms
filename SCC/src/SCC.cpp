@@ -31,7 +31,6 @@ int main() {
     file.open(myfile.c_str());
 
 	unsigned long int head, tail, n_nodes;
-//	n_nodes=9;
 	n_nodes=875714;
 	std::vector <std::vector <unsigned long int>> graph;
 	graph.resize(n_nodes+1);
@@ -41,8 +40,6 @@ int main() {
 
 	//read G as reversed(tail before head)
 	while (file >> head >> tail){ //G inversed
-//		cout << head <<  " " << tail<<endl;
-
 		if (!is_created[tail]){
 			graph[tail].push_back(tail);
 			graph[tail].push_back(head);
@@ -51,7 +48,7 @@ int main() {
 			graph[tail].push_back(head);
 		}
 	}
-	   //fill gaps: nodes never created
+	//fill gaps: nodes never created
     for (int i=1; i< (int) n_nodes+1; ++i){
     	if (!is_created[i]){
 			graph[i].push_back(i);
@@ -59,12 +56,7 @@ int main() {
     }
 
 	file.close();
-/*
-    for (int gg=0; gg< (int)graph.size(); ++gg){
-    std::for_each(graph[gg].begin(), graph[gg].end(),[](int a){cout<< a<<" "; });
-    cout<<  endl;
-    }
-*/
+
     vector<unsigned long int> natural_order;
     for (int i=0; i< n_nodes+1; ++i){
     	natural_order.push_back(i);
@@ -85,8 +77,6 @@ int main() {
 
 
 	while (file >> tail >> head){ //G
-//		cout << head <<  " " << tail<<endl;
-
 		if (!is_created[tail]){
 			graph[tail].push_back(tail);
 			graph[tail].push_back(head);
@@ -95,19 +85,14 @@ int main() {
 			graph[tail].push_back(head);
 		}
 	}
-	   //fill gaps: nodes never created
+	//fill gaps: nodes never created
     for (int i=1; i< n_nodes+1; ++i){
  	 if (!is_created[i]){
 			graph[i].push_back(i);
  	 }
     }
 	file.close();
-/*
-    for (int gg=0; gg< (int)graph.size(); ++gg){
-    std::for_each(graph[gg].begin(), graph[gg].end(),[](int a){cout<< a<<" "; });
-    cout<<  endl;
-    }
-*/
+
     //swap nodes and ft
     vector<unsigned long int> order;
     order.resize(n_nodes+1);
@@ -117,12 +102,7 @@ int main() {
         }
     	order[ft[graph[gg][0]]]=gg;
     }
-/*
-    for (int gg=0; gg< (int)graph.size(); ++gg){
-    std::for_each(graph[gg].begin(), graph[gg].end(),[](int a){cout<< a<<" "; });
-    cout<<  endl;
-    }
-*/
+
     //second pass on G
     DFS_Loop loopGraph(graph, n_nodes, order);
 
@@ -140,12 +120,7 @@ int main() {
 	for (int ii=0; ii<10; ++ii){
 		cout<< counts[idx[ii]]<< " " << leaders[idx[ii]]<< endl;
 	}
-/*
-    std::for_each(leaders.begin(), leaders.end(),[](int a){cout<< a<<" "; });
-    cout<<endl;
-	std::for_each(counts.begin(), counts.end(),[](int a){cout<< a<<" "; });
-    cout<<endl;
-*/
+
 	return 0;
 }
 

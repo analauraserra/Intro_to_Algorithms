@@ -49,13 +49,13 @@ int main() {
 
 	A.push_back(va1);
     cout << "added " << va1<<endl;
-  //  cout << "median 1 " <<median[1]<<endl;
+    cout << "median 1 " <<median[1]<<endl;
     std::nth_element(A.begin(), A.begin() + A.size()/2, A.end());
     median2.push_back(va1);
 
 	A.push_back(va2);
     cout << "added " << va2<<endl;
- //   cout << "median 2 " <<median[2]<<endl;
+    cout << "median 2 " <<median[2]<<endl;
     std::nth_element(A.begin(), A.begin() + A.size()/2, A.end());
     median2.push_back(std::min(va1,va2));
 
@@ -92,22 +92,17 @@ int main() {
 		if (k%2==0){ //heaps must be the same size
 			while (size_high != size_low){
 				if(size_high > size_low ){
-				//	cout<< "high> low " <<endl;
-
 					Hl.push(Hh.top());
 					Hh.pop();
 					size_low=Hl.size();
 					size_high=Hh.size();
 				}else{
-			//		cout<< "high< low " <<endl;
-
 					Hh.push(Hl.top());
 					Hl.pop();
 					size_low=Hl.size();
 					size_high=Hh.size();
 				}
 			}
-	//		cout<< "equal " <<endl;
 
 		//median
 		median.push_back(Hl.top());
@@ -172,12 +167,9 @@ int main() {
     	ofile<< median[l]<<" "<<median2[l]<<endl;
     }
 
-
     ofile<< endl;
     ofile<< sum<<" "<<sum2<<endl;
     ofile<< sum%10000<<" "<<sum2%10000<<endl;
-
-
     ofile.close();
 
 	return 0;

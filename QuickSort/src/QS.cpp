@@ -17,15 +17,10 @@ int QS::NComp = 0;
 
 QS::QS(unsigned long int order, std::vector<int>& A, unsigned long int l, unsigned long int r) {
 long int n= r-l+1;
-/*
-cout<< "--------------------------------"<< endl;
-
-cout<< "array of : "<< n <<" elements"<< endl;
-*/
 	if(n>1){
 
 		p_idx=choosePivot(order, A, l, r);
-		cout<< "Apivot : "<<A[p_idx]<< endl;
+		cout<< "A pivot : "<<A[p_idx]<< endl;
 
 		if (p_idx != l) std::swap(A[l],A[p_idx]);
 
@@ -53,7 +48,6 @@ cout<< "pivot : "<<p<< endl;
 NComp=NComp+r-l;
 unsigned long int i=l+1;
  for (unsigned long int j=l+1; j<=r; ++j){
-	//  NComp=NComp+1;
 	  if (A[j] < p ){
 		  std::swap(A[j], A[i]);
 		  ++i;
@@ -62,18 +56,9 @@ unsigned long int i=l+1;
 
  std::swap(A[l], A[i-1]);
  p_idx=i-1;
-
-
-/*
- cout<< "pivot changed to : "<< p_idx <<endl;
- std::for_each(A.begin(), A.end(),[](int a){
- 	cout<< a<<endl; });
-*/
 }
 
 unsigned long int QS::choosePivot(unsigned long o, std::vector<int>& A, unsigned long int l, unsigned long int r){
-//return l;
-//return r;
 
 	unsigned long int mid, n;
 	n=r-l+1;
@@ -82,9 +67,7 @@ unsigned long int QS::choosePivot(unsigned long o, std::vector<int>& A, unsigned
 	}else{ mid=(n+1)/2+l-1;}
 
 	cout<< "n "<<n<<" "<<endl;
-
 	cout<< "l, mid, r "<<l <<" "<<mid<<" "<<r<< endl;
-
 	cout<< "Al , Amid and Ar: "<< A[l] <<" "<<A[mid]<<" "<< A[r]<< endl;
 
 	//identify the median of l,r,mid
@@ -101,6 +84,4 @@ unsigned long int QS::choosePivot(unsigned long o, std::vector<int>& A, unsigned
 			}else{return r;}
 		}
 	}
-
-
 }

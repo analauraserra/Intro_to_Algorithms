@@ -35,7 +35,6 @@ public:
 		     std::copy(std::istream_iterator<std::string>(ss),
 		              std::istream_iterator<std::string>(),
 		              std::back_inserter<std::vector<std::string> >(fieldsString));
-
 		          // string to float
 		          std::for_each(fieldsString.begin(), fieldsString.end(),[&fields](std::string s){
 		         	int numb; std::istringstream ( s ) >> numb;

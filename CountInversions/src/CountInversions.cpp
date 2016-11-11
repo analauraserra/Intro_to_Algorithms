@@ -34,9 +34,8 @@ int main() {
     cout<< "using divide and conquer"<<endl;
     unsigned long int inv;
     SortAndCount myCount(array, inv);
-  //  int count= myCount.getCount();
-
-   // cout<< "number of recursive calls: "<< count<<endl;
+    int count= myCount.getCount();
+    cout<< "number of recursive calls: "<< count<<endl;
     cout<< "inversions: "<< inv<<endl;
 
 	return 0;

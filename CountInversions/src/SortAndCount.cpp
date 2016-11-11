@@ -22,46 +22,36 @@ SortAndCount::SortAndCount(vector<int> &A, unsigned long &inv) {
 	        ++count; // modifies the class variable "Request::count"
     inv=0;
 
-//	cout<< "call number "<< count <<endl;
     int n=A.size();
-//	cout<< "size of vector "<< n <<endl;
     if (n==1){
-   // 	cout<< "unity vector"<<endl;
     	inv=0;
     } else {
-
     	// build two half vectors
         	int n1st, n2nd;
         	if (n%2==0) {n1st=n/2; n2nd=n1st;}
         	else{n1st=(n-1)/2; n2nd=(n+1)/2;}
 
-   //     	cout<< "building vectors with "<< n1st << " and "<< n2nd << " elements "<<endl;
         	vector<int> B(&A[0], &A[n1st]);
         	vector<int> C(&A[n1st], &A[n]);
-
-      //  	cout << B[0] << " " << B[n1st-1]<<endl;
-       // 	cout << C[0] << " " << C[n2nd-1]<<endl;
 
         	unsigned long int x, y;
         	x=0;
         	y=0;
         	SortAndCount firstHalf(B, x);
-      //  	cout<< "-------- inversions first half "<< x<<endl;
+        	cout<< "-------- inversions first half "<< x<<endl;
 
         	SortAndCount secondHalf(C, y);
-    //    	cout<< "-------- inversions second half "<< x<<endl;
+        	cout<< "-------- inversions second half "<< x<<endl;
 
             unsigned long int z=SplitInversions(n1st, B, n2nd, C);
         	inv=inv+z+x+y;
         	if(inv < 0){
-        		cout<< "nooooooooooooooooooo"<<endl;
+        		cout<< "Negative inv; debug your code"<<endl;
 
         	};
-   // 		cout<< "x y z: "<<x << " "<< y << " "<< z<<endl;
 
-    //		cout<< "inversions "<<inv<<endl;
+			cout<< "inversions "<<inv<<endl;
 
-  //          vector<int>().swap(A); //free that memory
     }
 }
 
@@ -88,14 +78,11 @@ unsigned long int SortAndCount::SplitInversions(int& n1st, vector<int>& B, int &
 	vector<int> idx_C=sort_indexes(C);
 
 	unsigned long int inv=0;
-//	cout<< "halves are "<< B.size()<< " "<< C.size()<<endl;
+	cout<< "halves are "<< B.size()<< " "<< C.size()<<endl;
 	for (int k = 0; k < n; ++k){
-  //      cout<< "here " << k << endl;
         while (i < n1st && j < n2nd){
 		int bb=idx_B[i];
 		int cc=idx_C[j];
- //       cout<< "bb " << i << " " << bb << endl;
- //       cout<< "cc " << j << " " << cc << endl;
 
 		if (B[bb]<C[cc]){
 			++i;

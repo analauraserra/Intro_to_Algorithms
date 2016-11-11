@@ -29,7 +29,6 @@ private:
     int number;
 
     template<typename T> static std::vector<T> sort_indexes(const std::vector<T> &v) {
-//	  std::cout<<"Sorting vector of "<<v.size()<<" components\n";
 	  // initialize original index locations
 	  std::vector<int> idx(v.size());
 	  for (unsigned int i = 0; i != idx.size(); ++i) idx[i] = i;

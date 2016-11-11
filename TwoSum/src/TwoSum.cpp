@@ -38,7 +38,6 @@ int main() {
 		A.push_back(value);
     }
 
-
     file.close();
 
     vector<int long> target;
@@ -50,7 +49,6 @@ int main() {
         ++set[v];
     }
 
-
     cout<< "hash table populated"<<endl;
 
 int count=0;
@@ -60,8 +58,8 @@ for (int long i=0; i<=20000; ++i){
     bool is_sum_there=false;
    // for each x in A
     for_each(A.begin(), A.end(),[&t, &set, &count, &is_sum_there](int long x){
-    //	cout<< "x is "<< x<<endl;
-    //	cout<< "target:  "<< t <<endl;
+   	cout<< "x is "<< x<<endl;
+   	cout<< "target:  "<< t <<endl;
 
     	if (x*2 != t){ // so y is not gonna be = x
     	std::unordered_map<int long, size_t>::const_iterator got = set.find(t-x);
